@@ -3,10 +3,18 @@ import axios from 'axios'
 import jwtDecode from 'jwt-decode'
 import store from './redux'
 import { Provider } from 'react-redux'
-
+import {BrowserRouter as Router, Route } from 'react-router-dom'
 import logo from './logo.svg';
 import './App.css';
 import Header from './Header';
+import Home from './screens/Home';
+import Admin from './screens/Admin';
+
+
+
+const Login = () => <h1>Login</h1>
+const Restrito = () => <h1>Restrito</h1>
+
 
 class App extends Component{
 
@@ -34,14 +42,20 @@ class App extends Component{
 
   // }  
 
-  render(){
+  render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <header className="App-header">
-            <Header/>
-          </header>
-        </div>
+        <Router>
+          <div className="App">
+            <header className="App-header">
+                <Route path="/" exact component={Home}/>
+                <Route path="/admin" component={Admin}/>
+                <Route path="/restrito" component={Restrito}/>
+                <Route path="/login" component={Login}/>
+                <Header/>
+            </header>
+          </div>
+        </Router>
     </Provider>
     )
   }
