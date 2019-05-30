@@ -21,6 +21,13 @@ class App extends Component{
       const decoded = jwtDecode(Htoken)
       console.log(decoded)
 
+      const users = await axios.get('http://localhost:3001/users/me',{
+        headers:{
+          Authorization:`Bearer ${Htoken}`
+        }
+      })
+      console.log('GET-USERS',users.data)
+
   }  
 
   render(){
