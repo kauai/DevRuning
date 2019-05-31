@@ -1,4 +1,11 @@
 import React from 'react'
+import Header from '../Header'
 
-const Home = () => <h1>Home</h1>
+const Home = () => {
+   return (
+    <>
+       <Header/>
+    </>
+   )
+}
 export default Home

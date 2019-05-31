@@ -3,6 +3,7 @@ import { Route,Link,Switch,Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Home from './Home'
 import ActionCreators from '../../redux/actionCreators'
+import { Table,Button } from 'semantic-ui-react'
 
 class Runs extends Component {
     
@@ -12,12 +13,12 @@ class Runs extends Component {
 
     renderRun = (item) => {
         return (
-            <tr>
-               <td>{item.friendly_name}</td>
-               <td>{item.duration}</td>
-               <td>{item.distance}</td>
-               <td>{item.created}</td>
-            </tr>
+            <Table.Row>
+               <Table.Cell>{item.friendly_name}</Table.Cell>
+               <Table.Cell>{item.duration}</Table.Cell>
+               <Table.Cell>{item.distance}</Table.Cell>
+               <Table.Cell>{item.created}</Table.Cell>
+            </Table.Row>
         )
     }
 
@@ -30,17 +31,19 @@ class Runs extends Component {
         }
         return (
             <>
-              <h1>Runs Admin</h1>
-              <button onClick={() => this.props.create(runs)}>Clique aqui</button>
-              <table border="1">
-                  <tr>
-                      <td>friendly name</td>
-                      <td>Duration</td>
-                      <td>Distance</td>
-                      <td>Created</td>
-                  </tr>
-                  {this.props.runs.data.map(this.renderRun)}
-              </table>
+              <h1>Runs Restrito</h1>
+              <Button onClick={() => this.props.create(runs)}>Clique aqui</Button>
+              <Table celled>
+                  <Table.Header celled>
+                      <Table.HeaderCell>friendly name</Table.HeaderCell>
+                      <Table.HeaderCell>Duration</Table.HeaderCell>
+                      <Table.HeaderCell>Distance</Table.HeaderCell>
+                      <Table.HeaderCell>Created</Table.HeaderCell>
+                  </Table.Header>
+                  <Table.Body>
+                    {this.props.runs.data.map(this.renderRun)}
+                  </Table.Body>
+              </Table>
             </>
         )
     }

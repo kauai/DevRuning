@@ -1,7 +1,7 @@
 import React from 'react'
 import { Route,Link,Switch,Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
-
+import Header from './elements/Header'
 import Home from './Home';
 
 const Users = props => <h1>Users Admin</h1>
@@ -15,10 +15,7 @@ const Admin = props =>{
     }
     return (
         <div>
-            <h1>Admin</h1>
-            <p><Link to="/admin">Home</Link></p>
-            <p><Link to="/admin/users">Users</Link></p>
-            {JSON.stringify(props.auth)}
+           <Header/>
           <div>
               <Switch>
                 <Route path={`${props.match.path}/`} exact component={Home}/>

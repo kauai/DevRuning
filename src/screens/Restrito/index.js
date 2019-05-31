@@ -3,6 +3,7 @@ import { Redirect,Link,Switch,Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import Home from './Home'
 import Runs from './Runs'
+import Header from './elements/Header'
 
 const Restrito = (props) => {
     
@@ -12,9 +13,7 @@ const Restrito = (props) => {
 
     return (
         <div>
-            <h1>Restrito</h1>
-            <p><Link to="/restrito">Home</Link></p>
-            <p><Link to="/restrito/runs">Runs</Link></p>
+            <Header/>
             <div>
                 <Switch>
                     <Route path={`${props.match.path}/`} exact component={Home}/>
