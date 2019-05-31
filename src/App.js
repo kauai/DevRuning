@@ -9,6 +9,7 @@ import Header from './Header';
 import Home from './screens/Home';
 import Admin from './screens/Admin';
 import Login from './screens/Login';
+import Restrito from './screens/Restrito'
 
 
 class App extends Component{
@@ -27,7 +28,7 @@ class App extends Component{
             <header className="App-header">
                 <Route path="/" exact component={Home}/>
                 <Route path="/admin" component={Admin}/>
-                {/* <Route path="/restrito" component={Restrito}/> */}
+                <Route path="/restrito" component={Restrito}/>
                 <Route path="/login" component={Login}/>
                 <Header/>
             </header>
