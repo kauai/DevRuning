@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
 import ActionCreator from '../redux/actionCreators'
 import { connect } from 'react-redux'
-
+import { Form, Button } from 'semantic-ui-react'
 class Login extends Component {
 
     state = {
@@ -34,11 +34,18 @@ class Login extends Component {
         return (
             <div>
                 <h1>Login</h1>
-                {/* {JSON.stringify(this.state)} */}
-                {this.props.auth.error && <h1>Erro de autenticaçao</h1>}
-                <input type="text" onChange={this.handleChange('email')}/><br/>
-                <input type="password" onChange={this.handleChange('passwd')}/><br/>
-                <button onClick={this.login}>Logar</button>
+                <Form>
+                    {this.props.auth.error && <h1>Erro de autenticaçao</h1>}
+                    <Form.Field>
+                       <label>Email</label>
+                       <input type="text" onChange={this.handleChange('email')}/><br/>
+                    </Form.Field>
+                    <Form.Field>
+                        <label>Password</label>
+                        <input type="password" onChange={this.handleChange('passwd')}/><br/>
+                    </Form.Field>
+                    <Button primary onClick={this.login}>Logar</Button>
+                </Form>
             </div>
         )
     }

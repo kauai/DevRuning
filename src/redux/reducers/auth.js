@@ -67,6 +67,15 @@ export const authFailure = (state = INITIAL_STATE,action) => {
     }
 }
 
+export const destroyAuthSuccess = (state = INITIAL_STATE,action) => {
+    return {
+        ...state,
+        isSignin:false,
+        isAuth:false,
+        user:{}
+    }
+}
+
 
 
 
@@ -74,9 +83,12 @@ export const HANDLERS = {
     [Types.SIGNIN_REQUEST]:signinRequest,
     [Types.SIGNIN_SUCCESS]:signinSuccess,
     [Types.SIGNIN_FAILURE]:signinFailure,
+
     [Types.AUTH_REQUEST]:authRequest,
     [Types.AUTH_SUCCESS]:authSuccess,
-    [Types.AUTH_FAILURE]:authFailure
+    [Types.AUTH_FAILURE]:authFailure,
+
+    [Types.DESTROY_AUTH_SUCCESS]:authFailure,
 }
 
 export default createReducer(INITIAL_STATE,HANDLERS)

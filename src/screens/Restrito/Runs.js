@@ -24,10 +24,10 @@ class Runs extends Component {
 
     render() {
         const runs = {
-             friendly_name:'Run teste',
-             duration:'100',
-             distance:'100',
-             created:'2019-01-01 00:00:00'
+             friendly_name:'Mais testes',
+             duration:'200',
+             distance:'300',
+             created:'2019-01-01 10:10:10'
         }
         return (
             <>
