@@ -4,36 +4,11 @@ import { connect } from 'react-redux'
 import Home from './Home'
 import ActionCreators from '../../redux/actionCreators'
 import { Table,Button } from 'semantic-ui-react'
-
-
-const Duration = props => {
-    const { duration } = props
-    let durationStr = ''
-    const hour = Math.floor(duration / 360)
-    if(hour > 0){
-        durationStr = hour.toString().padStart(2,'0') + ':'
-    }
-    const minutes = Math.floor((duration - (hour * 360)) / 60)
-    durationStr += minutes.toString().padStart(2,'0')
-    const seconds = (duration - hour * 360 - minutes * 60)
-    durationStr += ':' + seconds.toString().padStart(2,'0')
-    return <span>{ durationStr }</span>
-}
-
-const Distance = ({ distance, metric }) => {
-    let distanceStr = ''
-    if(metric == 'metric'){
-        distanceStr = distance + 'km'
-    }else{
-        let distanceMi = distance * 0.621371
-        distanceStr = distanceMi.toFixed(2) + 'mi'
-    }
-    return <span>{ distanceStr }</span>
-}
+import { Distance, Duration } from '../../screens/elements'
 
 class Runs extends Component {
     
-    componentDidMount(){
+    componentDidMount() {
         this.props.load()
     }
 
