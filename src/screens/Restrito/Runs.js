@@ -20,6 +20,17 @@ const Duration = props => {
     return <span>{ durationStr }</span>
 }
 
+const Distance = ({ distance, metric }) => {
+    let distanceStr = ''
+    if(metric == 'metric'){
+        distanceStr = distance + 'km'
+    }else{
+        let distanceMi = distance * 0.621371
+        distanceStr = distanceMi.toFixed(2) + 'mi'
+    }
+    return <span>{ distanceStr }</span>
+}
+
 class Runs extends Component {
     
     componentDidMount(){
@@ -31,7 +42,7 @@ class Runs extends Component {
             <Table.Row>
                <Table.Cell>{item.friendly_name}</Table.Cell>
                <Table.Cell><Duration duration={item.duration}/></Table.Cell>
-               <Table.Cell>{item.distance}</Table.Cell>
+               <Table.Cell><Distance distance={item.distance} metric={'miles'}/></Table.Cell>
                <Table.Cell>{item.created}</Table.Cell>
             </Table.Row>
         )
