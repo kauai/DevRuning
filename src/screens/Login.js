@@ -38,11 +38,11 @@ class Login extends Component {
                     {this.props.auth.error && <h1>Erro de autenticaçao</h1>}
                     <Form.Field>
                        <label>Email</label>
-                       <input type="text" onChange={this.handleChange('email')}/><br/>
+                       <input type="text" onChange={this.handleChange('email')}/>
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input type="password" onChange={this.handleChange('passwd')}/><br/>
+                        <input type="password" onChange={this.handleChange('passwd')}/>
                     </Form.Field>
                     <Button primary onClick={this.login}>Logar</Button>
                 </Form>
