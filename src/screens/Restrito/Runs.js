@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import Home from './Home'
 import ActionCreators from '../../redux/actionCreators'
 import { Table,Button } from 'semantic-ui-react'
-import { Distance, Duration } from '../../screens/elements'
+import { Distance, Duration,DateStr } from '../../screens/elements'
 
 class Runs extends Component {
     
@@ -18,7 +18,7 @@ class Runs extends Component {
                <Table.Cell>{item.friendly_name}</Table.Cell>
                <Table.Cell><Duration duration={item.duration}/></Table.Cell>
                <Table.Cell><Distance distance={item.distance} metric={'miles'}/></Table.Cell>
-               <Table.Cell>{item.created}</Table.Cell>
+               <Table.Cell><DateStr date={item.created} timezone={'America/Sao_Paulo'}/></Table.Cell>
             </Table.Row>
         )
     }
