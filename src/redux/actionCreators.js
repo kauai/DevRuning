@@ -20,7 +20,11 @@ export const { Types, Creators } = createActions({
     // 'friendly_name','duration','distance','created'
     createRunRequest:['run'],
     createRunSuccess:['run'],
-    createRunFailure:['error']
+    createRunFailure:['error'],
+
+    updateProfileRequest:['user'],
+    updateProfileSuccess:['user'],
+    updateProfileFailure:['error']
 })
 
 export default Creators

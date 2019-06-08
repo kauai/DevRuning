@@ -9,6 +9,7 @@ import { Distance, Duration,DateStr } from '../../screens/elements'
 class Runs extends Component {
     
     componentDidMount() {
+        console.log('RUNS',this.props)
         this.props.load()
     }
 
@@ -17,8 +18,8 @@ class Runs extends Component {
             <Table.Row>
                <Table.Cell>{item.friendly_name}</Table.Cell>
                <Table.Cell><Duration duration={item.duration}/></Table.Cell>
-               <Table.Cell><Distance distance={item.distance} metric={'miles'}/></Table.Cell>
-               <Table.Cell><DateStr date={item.created} timezone={'America/Sao_Paulo'}/></Table.Cell>
+               <Table.Cell><Distance distance={item.distance} metric={this.props.auth.user.unit}/></Table.Cell>
+               <Table.Cell><DateStr date={item.created} timezone={this.props.auth.user.timezone}/></Table.Cell>
             </Table.Row>
         )
     }
@@ -52,7 +53,8 @@ class Runs extends Component {
 
 const mapStateToProps = state => {
     return {
-        runs:state.runs
+        runs:state.runs,
+        auth:state.auth
     }
 }
 

@@ -16,7 +16,7 @@ const Header = (props) => {
                 <Menu.Menu position="right">
                     <Dropdown item text={name}>
                         <Dropdown.Menu>
-                            <Dropdown.Item>Minha Conta</Dropdown.Item>
+                            <Dropdown.Item as={Link} to="/restrito/myaccount">Minha Conta</Dropdown.Item>
                             <Dropdown.Item>Alterar Senha</Dropdown.Item>
                             <Dropdown.Item onClick={props.logout}>Logout</Dropdown.Item>
                         </Dropdown.Menu>
@@ -28,6 +28,7 @@ const Header = (props) => {
 }
 
 const mapStateToProps = (state) => {
+    console.log('STATE',state)
     return {
         auth:state.auth
     }

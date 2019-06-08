@@ -27,8 +27,14 @@ export function* auth(){
   let token = localStorage.getItem('@token-runing')
   if(token){
      try{
-        const user = jwtDecode(token)
-           yield put(ActionCreators.authSuccess(user))
+      //   const user = jwtDecode(token)
+           const user = yield axios.get('http://localhost:3001/users/me',{
+            headers:{
+               Authorization:`Bearer ${localStorage.getItem('@token-runing')}`
+            }
+           })
+           console.log('USER',user.data)
+           yield put(ActionCreators.authSuccess(user.data))
         }catch(e){
            yield put(ActionCreators.authFailure('Invalid token '))
         }
@@ -38,6 +44,29 @@ export function* auth(){
   }
   console.log('check auth')
 }
+
+
+export function* updateProfile(action){
+   const user = yield axios.patch(`http://localhost:3001/users/${action.user.id}`,
+   {
+      unit:action.user.unit,
+      timezone:action.user.timezone,
+      id:action.user.id
+   },
+   {
+   headers:{
+       Authorization:`Bearer ${localStorage.getItem('@token-runing')}`
+   }
+   })
+   
+   yield put(ActionCreators.updateProfileSuccess({
+      unit:action.user.unit,
+      timezone:action.user.timezone
+   }))
+   console.log('user',user)
+}
+
+
 
 export function* destroyAuth(){
   localStorage.removeItem('@token-runing')

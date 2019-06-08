@@ -4,12 +4,17 @@ import { connect } from 'react-redux'
 import Home from './Home'
 import Runs from './Runs'
 import Header from './elements/Header'
+import MyAccount from './MyAccount';
 
 const Restrito = (props) => {
-    
-    if(!props.auth.isAuth){
-        return <Redirect to="/login"/>
-    }
+    console.log('isSining',props.auth.isSaving)
+    // if(props.auth.isSaving){
+    //     return <p>Loading...</p>
+    // }
+
+    // if(!props.auth.isAuth){
+    //     return <Redirect to="/login"/>
+    // }
 
     return (
         <div>
@@ -18,6 +23,7 @@ const Restrito = (props) => {
                 <Switch>
                     <Route path={`${props.match.path}/`} exact component={Home}/>
                     <Route path={`${props.match.path}/runs`} component={Runs}/>
+                    <Route path={`${props.match.path}/myaccount`} component={MyAccount}/>
                 </Switch>
             </div>
         </div>
